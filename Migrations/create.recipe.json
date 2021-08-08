@@ -134,7 +134,8 @@
           "Settings": {
             "ContentPartSettings": {
               "Attachable": true,
-              "Description": "Provides fields that are commonly required on a menu item."
+              "Description": "Provides fields that are commonly required on a menu item.",
+              "DisplayName": "Common Menu Item"
             }
           },
           "ContentPartFieldDefinitionRecords": [
@@ -182,6 +183,19 @@
                   "Hint": "Whether link is opened in a new tab."
                 },
                 "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "CodeField",
+              "Name": "OnClick",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "OnClick",
+                  "Position": "3"
+                },
+                "CodeFieldSettings": {
+                  "Language": "javascript"
+                }
               }
             }
           ]

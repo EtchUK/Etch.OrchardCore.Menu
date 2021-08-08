@@ -28,6 +28,10 @@
     }
 }
 
-<a href="@linkUrl" class="@cssClasses" @{ if ((bool)Model.ContentItem.Content.CommonMenuItem.OpenNewTab.Value) { <text> target="_blank" rel="noopener noreferrer" </text>  } }>
+<a href="@linkUrl" 
+   class="@cssClasses" 
+   @{ if ((bool)Model.ContentItem.Content.CommonMenuItem.OpenNewTab.Value) { <text> target="_blank" rel="noopener noreferrer" </text>  } }
+   @{ if (!string.IsNullOrWhiteSpace(Model.ContentItem.Content.CommonMenuItem.OnClick.Value.ToString())) { <text>onClick="@Html.Raw(Model.ContentItem.Content.CommonMenuItem.OnClick.Value)"</text> } }
+>
     @Html.Raw(Model.ContentItem.Content.SVGMenuItem.Code.Value)
 </a>
