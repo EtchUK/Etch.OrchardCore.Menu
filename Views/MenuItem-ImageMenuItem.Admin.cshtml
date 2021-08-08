@@ -10,16 +10,16 @@
 
     var linkUrl = string.Empty;
 
-    if (Model.ContentItem.Content.ImageMenuItem.LinkTo.ContentItemIds.Count > 0)
+    if (Model.ContentItem.Content.CommonMenuItem.LinkTo.ContentItemIds.Count > 0)
     {
         var routeValues = new RouteValueDictionary(AutorouteOptions.Value.GlobalRouteValues);
-        routeValues[AutorouteOptions.Value.ContentItemIdKey] = Model.ContentItem.Content.ImageMenuItem.LinkTo.ContentItemIds[0];
+        routeValues[AutorouteOptions.Value.ContentItemIdKey] = Model.ContentItem.Content.CommonMenuItem.LinkTo.ContentItemIds[0];
         linkUrl = Url.RouteUrl(routeValues);
     }
 
-    if (!string.IsNullOrWhiteSpace(Model.ContentItem.Content.ImageMenuItem.ExternalUrl.Text.ToString()))
+    if (!string.IsNullOrWhiteSpace(Model.ContentItem.Content.CommonMenuItem.ExternalUrl.Text.ToString()))
     {
-        linkUrl = Model.ContentItem.Content.ImageMenuItem.ExternalUrl.Text.ToString();
+        linkUrl = Model.ContentItem.Content.CommonMenuItem.Text.ToString();
     }
 }
 

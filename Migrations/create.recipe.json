@@ -30,6 +30,15 @@
                   "Position": "0"
                 }
               }
+            },
+            {
+              "PartName": "CommonMenuItem",
+              "Name": "CommonMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
             }
           ]
         },
@@ -49,6 +58,15 @@
               "Settings": {
                 "ContentTypePartSettings": {
                   "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "CommonMenuItem",
+              "Name": "CommonMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
                 }
               }
             }
@@ -88,51 +106,6 @@
                 },
                 "ContentIndexSettings": {}
               }
-            },
-            {
-              "FieldName": "BooleanField",
-              "Name": "OpenNewTab",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Open New Tab",
-                  "Position": "4"
-                },
-                "BooleanFieldSettings": {
-                  "Hint": "Whether link is opened in a new tab."
-                },
-                "ContentIndexSettings": {}
-              }
-            },
-            {
-              "FieldName": "ContentPickerField",
-              "Name": "LinkTo",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Link To",
-                  "Position": "2"
-                },
-                "ContentPickerFieldSettings": {
-                  "DisplayedContentTypes": [
-                    "Homepage",
-                    "Page"
-                  ]
-                },
-                "ContentIndexSettings": {}
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "ExternalUrl",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "External Url",
-                  "Position": "3"
-                },
-                "TextFieldSettings": {
-                  "Hint": "URL to page on an external website. If specified, this will override content item selected in link to field."
-                },
-                "ContentIndexSettings": {}
-              }
             }
           ]
         },
@@ -153,17 +126,28 @@
                 },
                 "ContentIndexSettings": {}
               }
-            },
+            }
+          ]
+        },
+        {
+          "Name": "CommonMenuItem",
+          "Settings": {
+            "ContentPartSettings": {
+              "Attachable": true,
+              "Description": "Provides fields that are commonly required on a menu item."
+            }
+          },
+          "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "ContentPickerField",
               "Name": "LinkTo",
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Link To",
-                  "Position": "1"
+                  "Position": "0"
                 },
                 "ContentPickerFieldSettings": {
-                  "Hint": "URL user is navigated to when clicking SVG element.",
+                  "Hint": "Content item that user is navigated to.",
                   "DisplayedContentTypes": [
                     "Homepage",
                     "Page"
@@ -177,8 +161,8 @@
               "Name": "ExternalUrl",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "External Url",
-                  "Position": "2"
+                  "DisplayName": "External URL",
+                  "Position": "1"
                 },
                 "TextFieldSettings": {
                   "Hint": "URL to page on an external website. If specified, this will override content item selected in link to field."
@@ -192,7 +176,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Open New Tab",
-                  "Position": "3"
+                  "Position": "2"
                 },
                 "BooleanFieldSettings": {
                   "Hint": "Whether link is opened in a new tab."
