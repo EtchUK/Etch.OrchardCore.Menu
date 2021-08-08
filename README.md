@@ -18,7 +18,15 @@ Alternatively you can [download the source](https://github.com/etchuk/Etch.Orcha
 
 ## Usage
 
-_Add instructions on how to use module features._
+Enabled the "Custom Menu Items" feature, which will make add the menu item content types displayed below.
+
+### Image Menu Item
+
+Content editors can choose an image from the media library that will be displayed on the front-end linked to either a content item or an external URL.
+
+### SVG Menu Item
+
+This menu item contains a code field that should be populated with an `svg` element that will be displayed on the front-end linked to either a content item or an external URL.
 
 ## Packaging
 
