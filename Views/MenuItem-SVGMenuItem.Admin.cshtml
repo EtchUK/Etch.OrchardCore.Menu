@@ -10,16 +10,16 @@
 
     var linkUrl = string.Empty;
 
-    if (Model.ContentItem.Content.ImageMenuItem.LinkTo.ContentItemIds.Count > 0)
+    if (Model.ContentItem.Content.SVGMenuItem.LinkTo.ContentItemIds.Count > 0)
     {
         var routeValues = new RouteValueDictionary(AutorouteOptions.Value.GlobalRouteValues);
-        routeValues[AutorouteOptions.Value.ContentItemIdKey] = Model.ContentItem.Content.ImageMenuItem.LinkTo.ContentItemIds[0];
+        routeValues[AutorouteOptions.Value.ContentItemIdKey] = Model.ContentItem.Content.SVGMenuItem.LinkTo.ContentItemIds[0];
         linkUrl = Url.RouteUrl(routeValues);
     }
 
-    if (!string.IsNullOrWhiteSpace(Model.ContentItem.Content.ImageMenuItem.ExternalUrl.Text.ToString()))
+    if (!string.IsNullOrWhiteSpace(Model.ContentItem.Content.SVGMenuItem.ExternalUrl.Text.ToString()))
     {
-        linkUrl = Model.ContentItem.Content.ImageMenuItem.ExternalUrl.Text.ToString();
+        linkUrl = Model.ContentItem.Content.SVGMenuItem.ExternalUrl.Text.ToString();
     }
 }
 
@@ -48,7 +48,7 @@
                     @T["Delete"]
                 </a>
             </div>
-            <span><code>@linkUrl</code><span class="text-muted dashed"> - Image</span></span>
+            <span><code>@linkUrl</code><span class="text-muted dashed"> - SVG</span></span>
         </div>
     </div>
 

@@ -32,6 +32,27 @@
               }
             }
           ]
+        },
+        {
+          "Name": "SVGMenuItem",
+          "DisplayName": "SVG Menu Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SVGMenuItem",
+              "Name": "SVGMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
         }
       ],
       "ContentParts": [
@@ -109,6 +130,72 @@
                 },
                 "TextFieldSettings": {
                   "Hint": "URL to page on an external website. If specified, this will override content item selected in link to field."
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SVGMenuItem",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "CodeField",
+              "Name": "Code",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Code",
+                  "Position": "0"
+                },
+                "CodeFieldSettings": {
+                  "Language": "html"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "LinkTo",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Link To",
+                  "Position": "1"
+                },
+                "ContentPickerFieldSettings": {
+                  "Hint": "URL user is navigated to when clicking SVG element.",
+                  "DisplayedContentTypes": [
+                    "Homepage",
+                    "Page"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ExternalUrl",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "External Url",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {
+                  "Hint": "URL to page on an external website. If specified, this will override content item selected in link to field."
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "OpenNewTab",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Open New Tab",
+                  "Position": "3"
+                },
+                "BooleanFieldSettings": {
+                  "Hint": "Whether link is opened in a new tab."
                 },
                 "ContentIndexSettings": {}
               }

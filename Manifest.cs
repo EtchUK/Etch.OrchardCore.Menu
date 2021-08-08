@@ -6,5 +6,6 @@ using OrchardCore.Modules.Manifest;
     Description = "Provides custom menu items that aren't available by default.",
     Name = "Custom Menu Items",
     Version = "0.0.1",
-    Website = "https://etchuk.com"
+    Website = "https://etchuk.com",
+    Dependencies = new[] { "Etch.OrchardCore.Fields.Code", "OrchardCore.Media" }
 )]

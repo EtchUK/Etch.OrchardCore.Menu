@@ -12,7 +12,6 @@
 
     if (Model.ContentItem.Content.ImageMenuItem.LinkTo.ContentItemIds.Count > 0)
     {
-
         var routeValues = new RouteValueDictionary(AutorouteOptions.Value.GlobalRouteValues);
         routeValues[AutorouteOptions.Value.ContentItemIdKey] = Model.ContentItem.Content.ImageMenuItem.LinkTo.ContentItemIds[0];
         linkUrl = Url.RouteUrl(routeValues);

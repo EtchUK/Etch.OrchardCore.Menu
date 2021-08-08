@@ -1,0 +1,33 @@
+﻿@inject IOptions<AutorouteOptions> AutorouteOptions
+
+@using Microsoft.Extensions.Options;
+@using Microsoft.AspNetCore.Routing;
+@using OrchardCore.ContentManagement.Routing;
+@{
+    var linkUrl = "#";
+
+    if (Model.ContentItem.Content.SVGMenuItem.LinkTo.ContentItemIds.Count > 0)
+    {
+        var routeValues = new RouteValueDictionary(AutorouteOptions.Value.GlobalRouteValues);
+        routeValues[AutorouteOptions.Value.ContentItemIdKey] = Model.ContentItem.Content.SVGMenuItem.LinkTo.ContentItemIds[0];
+        linkUrl = Url.RouteUrl(routeValues);
+    }
+
+    if (!string.IsNullOrWhiteSpace(Model.ContentItem.Content.SVGMenuItem.ExternalUrl.Text.ToString()))
+    {
+        linkUrl = Model.ContentItem.Content.SVGMenuItem.ExternalUrl.Text.ToString();
+    }
+
+    var currentPageUrl = FullRequestPath;
+
+    var cssClasses = "";
+
+    if (linkUrl.Equals(currentPageUrl, StringComparison.OrdinalIgnoreCase))
+    {
+        cssClasses = cssClasses + " is-current-page";
+    }
+}
+
+<a href="@linkUrl" class="@cssClasses" @{ if ((bool)Model.ContentItem.Content.SVGMenuItem.OpenNewTab.Value) { <text> target="_blank" rel="noopener noreferrer" </text>  } }>
+    @Html.Raw(Model.ContentItem.Content.SVGMenuItem.Code.Value)
+</a>

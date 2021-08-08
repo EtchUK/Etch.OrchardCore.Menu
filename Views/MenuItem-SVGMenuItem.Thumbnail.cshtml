@@ -1,0 +1,9 @@
+﻿<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@T["SVG Menu Item"]</h4>
+        <p>@T["Display SVG element that is linked to another page."]</p>
+    </div>
+    <div class="card-footer text-muted text-xs-right">
+        <a class="btn btn-primary btn-sm thumbnail-link-create" asp-route-action="Create" asp-route-controller="Admin" asp-route-id="@Model.MenuItemType" asp-route-menuContentItemId="@Model.MenuContentItemId" asp-route-area="OrchardCore.Menu">@T["Add"]</a>
+    </div>
+</div>
