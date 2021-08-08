@@ -1,0 +1,121 @@
+{
+  "name": "",
+  "displayName": "",
+  "description": "",
+  "author": "",
+  "website": "",
+  "version": "",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "ImageMenuItem",
+          "DisplayName": "Image Menu Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ImageMenuItem",
+              "Name": "ImageMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "ImageMenuItem",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "MediaField",
+              "Name": "Image",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Image",
+                  "Position": "0"
+                },
+                "MediaFieldSettings": {
+                  "Required": true,
+                  "Multiple": false
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "AlternateText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Alternate Text",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Description of the appearance and function of the image."
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "OpenNewTab",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Open New Tab",
+                  "Position": "4"
+                },
+                "BooleanFieldSettings": {
+                  "Hint": "Whether link is opened in a new tab."
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "LinkTo",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Link To",
+                  "Position": "2"
+                },
+                "ContentPickerFieldSettings": {
+                  "DisplayedContentTypes": [
+                    "Homepage",
+                    "Page"
+                  ]
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ExternalUrl",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "External Url",
+                  "Position": "3"
+                },
+                "TextFieldSettings": {
+                  "Hint": "URL to page on an external website. If specified, this will override content item selected in link to field."
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
