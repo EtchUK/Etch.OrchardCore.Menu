@@ -18,5 +18,11 @@ namespace Etch.OrchardCore.Menu
             await _recipeMigrator.ExecuteAsync("create.recipe.json", this);
             return 1;
         }
+
+        public async Task<int> UpdateFrom1Async()
+        {
+            await _recipeMigrator.ExecuteAsync("update1.recipe.json", this);
+            return 2;
+        }
     }
 }

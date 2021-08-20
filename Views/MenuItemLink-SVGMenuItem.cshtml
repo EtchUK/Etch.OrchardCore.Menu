@@ -29,7 +29,9 @@
 }
 
 <a href="@linkUrl" 
-   class="@cssClasses" 
+   class="@cssClasses"
+   title="@Model.ContentItem.Content.SVGMenuItem.AlternateText?.Text"
+   aria-label="@Model.ContentItem.Content.SVGMenuItem.AlternateText?.Text"
    @{ if ((bool)Model.ContentItem.Content.CommonMenuItem.OpenNewTab.Value) { <text> target="_blank" rel="noopener noreferrer" </text>  } }
    @{ if (!string.IsNullOrWhiteSpace(Model.ContentItem.Content.CommonMenuItem.OnClick.Value.ToString())) { <text>onClick="@Html.Raw(Model.ContentItem.Content.CommonMenuItem.OnClick.Value)"</text> } }
 >
