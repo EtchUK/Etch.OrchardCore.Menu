@@ -1,0 +1,39 @@
+{
+  "name": "",
+  "displayName": "",
+  "description": "",
+  "author": "",
+  "website": "",
+  "version": "",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [],
+      "ContentParts": [
+        {
+          "Name": "SVGMenuItem",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "AlternateText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Alternate Text",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Describe purpose of link for accessibility."
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
