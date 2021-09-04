@@ -1,6 +1,6 @@
 # Etch.OrchardCore.Menu
 
-Provides custom menu items that aren't available by default.
+Module for [Orchard Core](https://github.com/orchardcms/OrchardCore) that provides additional menu items content types.
 
 ## Build Status
 
@@ -8,7 +8,7 @@ Provides custom menu items that aren't available by default.
 
 ## Orchard Core Reference
 
-This module is referencing the RC1 build of Orchard Core ([`1.0.0-rc2-13450`](https://www.nuget.org/packages/OrchardCore.Module.Targets/1.0.0-rc2-13450)).
+This module is referencing a stable build of Orchard Core ([`1.0.0`](https://www.nuget.org/packages/OrchardCore.Module.Targets/1.0.0)).
 
 ## Installing
 
