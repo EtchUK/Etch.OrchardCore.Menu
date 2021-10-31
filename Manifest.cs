@@ -5,7 +5,7 @@ using OrchardCore.Modules.Manifest;
     Category = "Navigation",
     Description = "Provides additional menu items content types.",
     Name = "Custom Menu Items",
-    Version = "0.2.0",
+    Version = "1.1.0",
     Website = "https://etchuk.com",
     Dependencies = new[] { "Etch.OrchardCore.Fields.Code", "OrchardCore.Media" }
 )]
