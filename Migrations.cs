@@ -24,5 +24,11 @@ namespace Etch.OrchardCore.Menu
             await _recipeMigrator.ExecuteAsync("update1.recipe.json", this);
             return 2;
         }
+
+        public async Task<int> UpdateFrom2Async()
+        {
+            await _recipeMigrator.ExecuteAsync("update2.recipe.json", this);
+            return 3;
+        }
     }
 }

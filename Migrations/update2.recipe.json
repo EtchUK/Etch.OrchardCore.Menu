@@ -1,0 +1,70 @@
+{
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "LabelMenuItem",
+          "DisplayName": "Label Menu Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "MenuItem"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "LabelMenuItem",
+              "Name": "LabelMenuItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "LabelMenuItem",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Text",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Text"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Style",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Style",
+                  "Editor": "PredefinedList"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Control the appearance of the label."
+                },
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Default",
+                      "value": ""
+                    }
+                  ],
+                  "Editor": 1
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

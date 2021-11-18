@@ -1,0 +1,11 @@
+﻿@{
+    var cssClasses = string.Empty;
+    var style = (string)Model.ContentItem.Content.LabelMenuItem.Style?.Text ?? string.Empty;
+
+    if (!string.IsNullOrWhiteSpace(style))
+    {
+        cssClasses = $"{cssClasses} {style}";
+    }
+}
+
+<div class="@cssClasses.Trim()">@Model.ContentItem.Content.LabelMenuItem.Text.Text</div>
