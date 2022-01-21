@@ -1,0 +1,50 @@
+﻿@inject IOptions<AutorouteOptions> AutorouteOptions
+
+@using Microsoft.Extensions.Options;
+@using Microsoft.AspNetCore.Routing;
+@using OrchardCore.ContentManagement
+@using OrchardCore.ContentManagement.Routing;
+
+@{
+    ContentItem contentItem = Model.ContentItem;
+    var routeValues = new RouteValueDictionary(AutorouteOptions.Value.GlobalRouteValues);
+    routeValues[AutorouteOptions.Value.ContentItemIdKey] = Model.ContentItem.Content.NotificationMenuItem.SelectedContentItem.ContentItemIds[0];
+    var linkUrl = Url.RouteUrl(routeValues);
+    var currentPageUrl = FullRequestPath;
+
+    var query = (string)Model.ContentItem.Content.NotificationMenuItem.NotificationQuery.Value;
+    var notificationCount = 0;
+
+    try
+    {
+        notificationCount = (await Orchard.ContentQueryAsync(query)).Count();
+    }
+    catch
+    {
+        notificationCount = 0;
+    }
+
+    var cssClasses = "notification";
+    var style = (string)Model.ContentItem.Content.LinkVisualPart.Style?.Text ?? string.Empty;
+
+    if (!string.IsNullOrWhiteSpace(style))
+    {
+        cssClasses = $"{cssClasses} {style}";
+    }
+
+    if (linkUrl.Equals(currentPageUrl, StringComparison.OrdinalIgnoreCase)) 
+    {
+        cssClasses += " is-current-page";
+    }
+}
+
+@if (notificationCount > 0)
+{
+    <a href="@linkUrl" class="@cssClasses">
+        @Model.ContentItem.DisplayText <span class="notification__count">@notificationCount</span>
+    </a>
+}
+else
+{
+    <a href="@linkUrl" class="@cssClasses">@Model.ContentItem.DisplayText</a>
+}
