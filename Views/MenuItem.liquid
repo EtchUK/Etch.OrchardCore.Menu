@@ -1,8 +1,11 @@
+{% assign contentType = Model.Properties.ContentItem.ContentType | html_class %}
 {% assign cssClasses = "nav__item" %}
 
 {% if Model.HasItems %}
     {% assign cssClasses = "nav__item nav__item--parent" %}
 {% endif %}
+
+{% assign cssClasses = cssClasses | append: " nav__item--" | append: contentType %}
 
 <li class="{{ cssClasses }}">
     {% shape_clear_alternates Model %}

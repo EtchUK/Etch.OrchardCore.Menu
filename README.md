@@ -24,6 +24,10 @@ Enabled the "Custom Menu Items" feature, which will make add the menu item conte
 
 Content editors can choose an image from the media library that will be displayed on the front-end linked to either a content item or an external URL.
 
+### Notifcation Menu Item
+
+Display a count driven by a query alongside a menu item, an example would be a count of the number of available jobs.
+
 ### SVG Menu Item
 
 This menu item contains a code field that should be populated with an `svg` element that will be displayed on the front-end linked to either a content item or an external URL.
