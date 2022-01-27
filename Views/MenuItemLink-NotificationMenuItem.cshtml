@@ -24,7 +24,7 @@
         notificationCount = 0;
     }
 
-    var cssClasses = "notification";
+    var cssClasses = string.Empty;
     var style = (string)Model.ContentItem.Content.LinkVisualPart.Style?.Text ?? string.Empty;
 
     if (!string.IsNullOrWhiteSpace(style))
@@ -41,7 +41,7 @@
 @if (notificationCount > 0)
 {
     <a href="@linkUrl" class="@cssClasses">
-        @Model.ContentItem.DisplayText <span class="notification__count">@notificationCount</span>
+        @Model.ContentItem.DisplayText <span class="nav__item-count">@notificationCount</span>
     </a>
 }
 else
