@@ -55,5 +55,18 @@ namespace Etch.OrchardCore.Menu
             await _recipeMigrator.ExecuteAsync("update4.recipe.json", this);
             return 5;
         }
+
+        public int UpdateFrom5()
+        {
+            _contentDefinitionManager.AlterPartDefinition("LabelMenuItem", builder => builder
+                .RemoveField("Style"));
+
+            _contentDefinitionManager.AlterTypeDefinition("LabelMenuItem", builder => builder
+                .WithPart("LinkVisualPart", builder => builder
+                    .WithPosition("2")));
+
+            return 6;
+        }
+
     }
 }
