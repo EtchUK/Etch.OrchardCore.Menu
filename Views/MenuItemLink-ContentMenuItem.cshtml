@@ -9,10 +9,16 @@
 @{
     ContentItem contentItem = Model.ContentItem;
     var menuItemPart = contentItem.As<ContentMenuItemPart>();
+    var linkBehaviourPart = contentItem.Content.LinkBehaviourPart;
+
     var routeValues = new RouteValueDictionary(AutorouteOptions.Value.GlobalRouteValues);
     routeValues[AutorouteOptions.Value.ContentItemIdKey] = menuItemPart.ContentItem.Content.ContentMenuItemPart.SelectedContentItem.ContentItemIds[0];
     var linkUrl = Url.RouteUrl(routeValues);
     var currentPageUrl = FullRequestPath;
+
+    var openIn = linkBehaviourPart.OpenIn.Text.Value;
+    var isModal = (openIn == "modal" || openIn == "modal-wide") ? true : false ;
+    var onClickEvent = linkBehaviourPart.ClickEvent.Value;
 }
 
 @{
@@ -34,10 +40,23 @@
     {
         cssClasses = $"{cssClasses} {style}";
     }
+
+    if (isModal)
+    {
+        cssClasses = $"{cssClasses} js-iframe-modal";
+    }
+
 }
 
-<a href="@linkUrl" class="@cssClasses.Trim()" @Html.Raw(Model.HasItems ? "aria-haspopup=\"true\" aria-expanded=\"false\"" : string.Empty)>
+<a href="@linkUrl"
+    class="@cssClasses.Trim()"
+    @Html.Raw(onClickEvent != null ? $"onClick=\"{onClickEvent}\"" : string.Empty)
+    @Html.Raw(openIn != null || isModal == false ? $"target=\"{openIn}\"" : string.Empty)
+    @Html.Raw(isModal ? $"data-iframe=\"{isModal}\"" : string.Empty)
+    @Html.Raw(openIn == "modal-wide" ? $"data-wide=\"{isModal}\"" : string.Empty)
+    @Html.Raw(Model.HasItems ? "aria-haspopup=\"true\" aria-expanded=\"false\"" : string.Empty)>
     @contentItem.DisplayText
+
     @if (Model.HasItems)
     {
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 158.2">

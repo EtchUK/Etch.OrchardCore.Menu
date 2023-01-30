@@ -7,10 +7,17 @@
 
 @{
     ContentItem contentItem = Model.ContentItem;
+
+    var linkBehaviourPart = contentItem.Content.LinkBehaviourPart;
+
     var routeValues = new RouteValueDictionary(AutorouteOptions.Value.GlobalRouteValues);
     routeValues[AutorouteOptions.Value.ContentItemIdKey] = Model.ContentItem.Content.NotificationMenuItem.SelectedContentItem.ContentItemIds[0];
     var linkUrl = Url.RouteUrl(routeValues);
     var currentPageUrl = FullRequestPath;
+
+    var openIn = linkBehaviourPart.OpenIn.Text.Value;
+    var isModal = (openIn == "modal" || openIn == "modal-wide") ? true : false;
+    var onClickEvent = linkBehaviourPart.ClickEvent.Value;
 
     var query = (string)Model.ContentItem.Content.NotificationMenuItem.NotificationQuery.Value;
     var notificationCount = 0;
@@ -36,15 +43,33 @@
     {
         cssClasses += " is-current-page";
     }
+
+    if (isModal)
+    {
+        cssClasses = $"{cssClasses} js-iframe-modal";
+    }
 }
 
 @if (notificationCount > 0)
 {
-    <a href="@linkUrl" class="@cssClasses">
-        @Model.ContentItem.DisplayText <span class="nav__item-count">@notificationCount</span>
+    <a href="@linkUrl"
+        class="@cssClasses"
+        @Html.Raw(onClickEvent != null ? $"onClick=\"{onClickEvent}\"" : string.Empty)
+        @Html.Raw(openIn != null || isModal == false ? $"target=\"{openIn}\"" : string.Empty)
+        @Html.Raw(isModal ? $"data-iframe=\"{isModal}\"" : string.Empty)
+        @Html.Raw(openIn == "modal-wide" ? $"data-wide=\"{isModal}\"" : string.Empty)>
+        @Model.ContentItem.DisplayText
+        <span class="nav__item-count">@notificationCount</span>
     </a>
 }
 else
 {
-    <a href="@linkUrl" class="@cssClasses">@Model.ContentItem.DisplayText</a>
+    <a href="@linkUrl"
+        class="@cssClasses"
+        @Html.Raw(onClickEvent != null ? $"onClick=\"{onClickEvent}\"" : string.Empty)
+        @Html.Raw(openIn != null || isModal == false ? $"target=\"{openIn}\"" : string.Empty)
+        @Html.Raw(isModal ? $"data-iframe=\"{isModal}\"" : string.Empty)
+        @Html.Raw(openIn == "modal-wide" ? $"data-wide=\"{isModal}\"" : string.Empty)>
+        @Model.ContentItem.DisplayText
+   </a>
 }

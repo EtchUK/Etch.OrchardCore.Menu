@@ -6,21 +6,12 @@
 @{
     ContentItem contentItem = Model.ContentItem;
     var menuItems = contentItem.As<MenuItemsListPart>();
+    var linkDestinationPart = contentItem.Content.LinkDestinationPart;
     var index = 0;
 
     var linkUrl = string.Empty;
+    linkUrl = linkDestinationPart.DestinationURL.Text.Value;
 
-    if (Model.ContentItem.Content.CommonMenuItem.LinkTo.ContentItemIds.Count > 0)
-    {
-        var routeValues = new RouteValueDictionary(AutorouteOptions.Value.GlobalRouteValues);
-        routeValues[AutorouteOptions.Value.ContentItemIdKey] = Model.ContentItem.Content.CommonMenuItem.LinkTo.ContentItemIds[0];
-        linkUrl = Url.RouteUrl(routeValues);
-    }
-
-    if (!string.IsNullOrWhiteSpace(Model.ContentItem.Content.CommonMenuItem.ExternalUrl.Text.ToString()))
-    {
-        linkUrl = Model.ContentItem.Content.CommonMenuItem.ExternalUrl.Text.ToString();
-    }
 }
 
 <li class="menu-item" id="menu-id-@Model.Index" data-index="@Model.Index">
