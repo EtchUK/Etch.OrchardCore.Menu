@@ -6,21 +6,11 @@
 @{
     ContentItem contentItem = Model.ContentItem;
     var menuItems = contentItem.As<MenuItemsListPart>();
+    var linkDestinationPart = contentItem.Content.LinkDestinationPart;
     var index = 0;
 
     var linkUrl = string.Empty;
-
-    if (Model.ContentItem.Content.CommonMenuItem.LinkTo.ContentItemIds.Count > 0)
-    {
-        var routeValues = new RouteValueDictionary(AutorouteOptions.Value.GlobalRouteValues);
-        routeValues[AutorouteOptions.Value.ContentItemIdKey] = Model.ContentItem.Content.CommonMenuItem.LinkTo.ContentItemIds[0];
-        linkUrl = Url.RouteUrl(routeValues);
-    }
-
-    if (!string.IsNullOrWhiteSpace(Model.ContentItem.Content.CommonMenuItem.ExternalUrl.Text.ToString()))
-    {
-        linkUrl = Model.ContentItem.Content.CommonMenuItem.ExternalUrl.Text.ToString();
-    }
+    linkUrl = linkDestinationPart.DestinationURL.Text.Value;
 }
 
 <li class="menu-item" id="menu-id-@Model.Index" data-index="@Model.Index">
@@ -59,7 +49,6 @@
 
             @foreach (var menuItem in menuItems.MenuItems)
             {
-
                 dynamic menuItemShape = await ContentItemDisplayManager.BuildDisplayAsync(menuItem, updater, "Admin");
                 menuItemShape.MenuPart = Model.MenuPart;
                 menuItemShape.Index = Model.Index + "-" + index++;

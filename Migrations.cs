@@ -68,5 +68,28 @@ namespace Etch.OrchardCore.Menu
             return 6;
         }
 
+        public int UpdateFrom6()
+        {
+            _contentDefinitionManager.AlterTypeDefinition("ContentMenuItem", builder => builder
+                .WithPart("LinkBehaviourPart")); 
+
+            _contentDefinitionManager.AlterTypeDefinition("ImageMenuItem", builder => builder
+                .RemovePart("CommonMenuItem")
+                .WithPart("LinkDestinationPart")
+                .WithPart("LinkBehaviourPart")); 
+
+            _contentDefinitionManager.AlterTypeDefinition("LinkMenuItem", builder => builder
+                .WithPart("LinkBehaviourPart")); 
+
+            _contentDefinitionManager.AlterTypeDefinition("NotificationMenuItem", builder => builder
+                .WithPart("LinkBehaviourPart"));
+
+            _contentDefinitionManager.AlterTypeDefinition("SVGMenuItem", builder => builder
+                .RemovePart("CommonMenuItem")
+                .WithPart("LinkDestinationPart")
+                .WithPart("LinkBehaviourPart"));
+
+            return 7;
+        }
     }
 }
