@@ -9,8 +9,7 @@
     var linkDestinationPart = contentItem.Content.LinkDestinationPart;
     var index = 0;
 
-    var linkUrl = string.Empty;
-    linkUrl = linkDestinationPart.DestinationURL.Text.Value;
+    var linkUrl = linkDestinationPart?.DestinationUrl?.Text.Value ?? string.Empty;
 }
 
 <li class="menu-item" id="menu-id-@Model.Index" data-index="@Model.Index">
@@ -38,7 +37,7 @@
                     @T["Delete"]
                 </a>
             </div>
-            <span><code>@linkUrl</code><span class="text-muted dashed"> - SVG</span></span>
+            <span><code>@linkUrl</code><span class="text-muted dashed">SVG</span></span>
         </div>
     </div>
 
