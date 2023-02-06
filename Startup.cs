@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Etch.OrchardCore.Menu.Helpers;
+using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Data.Migration;
 using OrchardCore.Modules;
 
@@ -9,6 +10,7 @@ namespace Etch.OrchardCore.Menu
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDataMigration, Migrations>();
+            services.AddScoped<ICommonMenuItemPartMigrator, CommonMenuItemPartMigrator>();
         }
     }
 }

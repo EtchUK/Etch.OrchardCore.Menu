@@ -9,12 +9,11 @@
     var linkBehaviourPart = contentItem.Content.LinkBehaviourPart;
     var linkDestinationPart = contentItem.Content.LinkDestinationPart;
 
-    var linkUrl = "#";
-    linkUrl = linkDestinationPart.DestinationURL.Text.Value;
+    var linkUrl = linkDestinationPart?.DestinationUrl?.Text.Value ?? "#";
 
-    var openIn = linkBehaviourPart.OpenIn.Text.Value;
+    var openIn = linkBehaviourPart?.OpenIn?.Text.Value ?? "_self";
     var isModal = (openIn == "modal" || openIn == "modal-wide") ? true : false;
-    var onClickEvent = linkBehaviourPart.ClickEvent.Value;
+    var onClickEvent = linkBehaviourPart?.ClickEvent?.Value ?? string.Empty;
 
     var currentPageUrl = FullRequestPath;
 

@@ -9,8 +9,7 @@
     var linkDestinationPart = contentItem.Content.LinkDestinationPart;
     var index = 0;
 
-    var linkUrl = string.Empty;
-    linkUrl = linkDestinationPart.DestinationURL.Text.Value;
+    var linkUrl = linkDestinationPart?.DestinationUrl?.Text.Value ?? string.Empty;
 
 }
 
@@ -39,7 +38,7 @@
                     @T["Delete"]
                 </a>
             </div>
-            <span><code>@linkUrl</code><span class="text-muted dashed"> - Image</span></span>
+            <span><code>@linkUrl</code><span class="text-muted dashed">Image</span></span>
         </div>
     </div>
 
