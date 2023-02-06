@@ -15,9 +15,9 @@
     var linkUrl = Url.RouteUrl(routeValues);
     var currentPageUrl = FullRequestPath;
 
-    var openIn = linkBehaviourPart.OpenIn.Text.Value;
+    var openIn = linkBehaviourPart?.OpenIn?.Text.Value ?? "_self";
     var isModal = (openIn == "modal" || openIn == "modal-wide") ? true : false;
-    var onClickEvent = linkBehaviourPart.ClickEvent.Value;
+    var onClickEvent = linkBehaviourPart?.ClickEvent?.Value ?? string.Empty;
 
     var query = (string)Model.ContentItem.Content.NotificationMenuItem.NotificationQuery.Value;
     var notificationCount = 0;

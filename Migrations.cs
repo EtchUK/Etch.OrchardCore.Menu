@@ -1,5 +1,6 @@
-﻿using OrchardCore.ContentFields.Fields;
-using OrchardCore.ContentFields.Settings;
+﻿using Etch.OrchardCore.Menu.Helpers;
+using Etch.OrchardCore.Menu.Models;
+using Etch.OrchardCore.Widgets.Models;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
@@ -11,12 +12,15 @@ namespace Etch.OrchardCore.Menu
     public class Migrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
+        private readonly ICommonMenuItemPartMigrator _commonMenuItemPartMigrator;
         private readonly IRecipeMigrator _recipeMigrator;
 
-        public Migrations(IContentDefinitionManager contentDefinitionManager, IRecipeMigrator recipeMigrator)
+        public Migrations(ICommonMenuItemPartMigrator commonMenuitemPartMigrator, IContentDefinitionManager contentDefinitionManager, IRecipeMigrator recipeMigrator)
         {
             _contentDefinitionManager = contentDefinitionManager;
+            _commonMenuItemPartMigrator = commonMenuitemPartMigrator;
             _recipeMigrator = recipeMigrator;
+            _commonMenuItemPartMigrator = commonMenuitemPartMigrator;
         }
 
         public async Task<int> CreateAsync()
@@ -71,25 +75,41 @@ namespace Etch.OrchardCore.Menu
         public int UpdateFrom6()
         {
             _contentDefinitionManager.AlterTypeDefinition("ContentMenuItem", builder => builder
-                .WithPart("LinkBehaviourPart")); 
+                .RemovePart(nameof(CommonMenuItem))
+                .WithPart(nameof(LinkBehaviourPart), part => part
+                    .WithPosition("15")));
 
             _contentDefinitionManager.AlterTypeDefinition("ImageMenuItem", builder => builder
-                .RemovePart("CommonMenuItem")
-                .WithPart("LinkDestinationPart")
-                .WithPart("LinkBehaviourPart")); 
+                .RemovePart(nameof(CommonMenuItem))
+                .WithPart(nameof(LinkDestinationPart), part => part
+                    .WithPosition("10"))
+                .WithPart(nameof(LinkBehaviourPart), part => part
+                    .WithPosition("15")));
 
             _contentDefinitionManager.AlterTypeDefinition("LinkMenuItem", builder => builder
-                .WithPart("LinkBehaviourPart")); 
+                .RemovePart(nameof(CommonMenuItem))
+                .WithPart(nameof(LinkBehaviourPart), part => part
+                    .WithPosition("15")));
 
             _contentDefinitionManager.AlterTypeDefinition("NotificationMenuItem", builder => builder
-                .WithPart("LinkBehaviourPart"));
+                .RemovePart(nameof(CommonMenuItem))
+                .WithPart(nameof(LinkBehaviourPart), part => part
+                    .WithPosition("15")));
 
             _contentDefinitionManager.AlterTypeDefinition("SVGMenuItem", builder => builder
-                .RemovePart("CommonMenuItem")
-                .WithPart("LinkDestinationPart")
-                .WithPart("LinkBehaviourPart"));
+                .RemovePart(nameof(CommonMenuItem))
+                .WithPart(nameof(LinkDestinationPart), part => part
+                    .WithPosition("10"))
+                .WithPart(nameof(LinkBehaviourPart), part => part
+                    .WithPosition("15")));
 
             return 7;
+        }
+
+        public async Task<int> UpdateFrom7()
+        {
+            await _commonMenuItemPartMigrator.MigrateAsync();
+            return 8;
         }
     }
 }
