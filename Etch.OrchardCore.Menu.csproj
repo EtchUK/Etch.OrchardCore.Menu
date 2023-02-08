@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.6.0</Version>
+    <Version>1.6.1</Version>
     <PackageId>Etch.OrchardCore.Menu</PackageId>
     <Title>Custom Menu Items</Title>
     <Authors>Etch UK Ltd.</Authors>
@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="OrchardCore.Autoroute" Version="1.4.0" />
     <PackageReference Include="OrchardCore.ContentFields" Version="1.4.0" />
     <PackageReference Include="OrchardCore.ContentManagement" Version="1.4.0" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="1.4.0" />
@@ -21,6 +22,7 @@
     <PackageReference Include="OrchardCore.Queries" Version="1.4.0" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="1.4.0" />
     <PackageReference Include="OrchardCore.Module.Targets" Version="1.4.0" />
+    <PackageReference Include="Etch.OrchardCore.Widgets" Version="1.7.8" />
   </ItemGroup>
 
   <ItemGroup>
