@@ -3,29 +3,32 @@
 {% assign isOpenNewTab = Model.ContentItem.Content.LinkMenuItem.OpenNewTab.Value %}
 
 {% assign openIn = Model.ContentItem.Content.LinkBehaviourPart.OpenIn.Text %}
-{% assign isModal = openIn == 'modal' or openIn == 'modal-wide' %}
+{% assign isModal = openIn == "modal" or openIn == "modal-wide" %}
 {% assign onClickEvent = Model.ContentItem.Content.LinkBehaviourPart.ClickEvent.Value %}
 
-{% assign cssClasses = "" %}
+{% assign cssClasses = "nav__item-link" %}
 
 {% if Model.ContentItem.Content.LinkVisualPart.Style.Text %}
-    {% assign cssClasses = cssClasses | append: Model.ContentItem.Content.LinkVisualPart.Style.Text %}
+    {% assign cssClasses = cssClasses | append:" " | append: Model.ContentItem.Content.LinkVisualPart.Style.Text %}
+{% else %}
+    {% assign cssClasses = cssClasses | append: " nav__item-link--default" %}
 {% endif %}
 
 {% if isModal %}
-    {% assign cssClasses = cssClasses | append: ' js-iframe-modal' %}
+    {% assign cssClasses = cssClasses | append: " js-iframe-modal" %}
 {% endif %}
 
-{% if Model.HasItems == "true" %}
-    <a href="{{ link.Url | href }}" 
+<a href="{{ link.Url | href }}" 
+    {% if Model.HasItems == "true" %}
     aria-haspopup="true" 
     aria-expanded="false"
+    {% endif %}
     {% if openIn != null and isModal == false %}
     target="{{ openIn }}"
     {% elsif isModal %}
     data-iframe="true"
     {% endif %}
-    {% if openIn == 'modal-wide' %}
+    {% if openIn == "modal-wide" %}
     data-wide="true"
     {% endif %}
     {% if onClickEvent != blank %}
@@ -33,24 +36,10 @@
     {% endif %}         
     class="{{ cssClasses }} js-nav-parent-link">
         {{ link.Name }}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 158.2">
-            <path d="M225.8 0L128 97.8 30.2 0 0 30.2l128 128 128-128z"/>
-        </svg>
-    </a>
-{% else %}
-    <a href="{{ link.Url | href }}" 
-    class="{{ cssClasses }}"
-    {% if openIn != null and isModal == false %}
-    target="{{ openIn }}"
-    {% elsif isModal %}
-    data-iframe="true"
-    {% endif %}
-    {% if openIn == 'modal-wide' %}
-    data-wide="true"
-    {% endif %}
-    {% if onClickEvent != blank %}
-    onClick="{{ onClickEvent }}" 
-    {% endif %}>
-    {{ link.Name }}
-    </a>
-{% endif %}
+        {% if Model.HasItems == "true" %}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 158.2">
+                <path d="M225.8 0L128 97.8 30.2 0 0 30.2l128 128 128-128z"/>
+            </svg>
+        {% endif %}
+</a>
+
