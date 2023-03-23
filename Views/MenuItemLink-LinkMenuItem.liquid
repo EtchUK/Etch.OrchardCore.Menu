@@ -17,9 +17,14 @@
 {% endif %}
 
 {% if Model.HasItems == "true" %}
-    <a href="{{ link.Url | href }}" 
+    {% assign cssClasses = cssClasses | append: '  js-nav-parent-link' %}
+{% endif %}
+
+<a href="{{ link.Url | href }}" 
+    {% if Model.HasItems == "true" %}
     aria-haspopup="true" 
     aria-expanded="false"
+    {% endif %}
     {% if openIn != null and isModal == false %}
     target="{{ openIn }}"
     {% elsif isModal %}
@@ -31,26 +36,13 @@
     {% if onClickEvent != blank %}
     onClick="{{ onClickEvent }}" 
     {% endif %}         
-    class="{{ cssClasses }} js-nav-parent-link">
+    class="{{ cssClasses }}">
         {{ link.Name }}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 158.2">
-            <path d="M225.8 0L128 97.8 30.2 0 0 30.2l128 128 128-128z"/>
-        </svg>
-    </a>
-{% else %}
-    <a href="{{ link.Url | href }}" 
-    class="{{ cssClasses }}"
-    {% if openIn != null and isModal == false %}
-    target="{{ openIn }}"
-    {% elsif isModal %}
-    data-iframe="true"
-    {% endif %}
-    {% if openIn == 'modal-wide' %}
-    data-wide="true"
-    {% endif %}
-    {% if onClickEvent != blank %}
-    onClick="{{ onClickEvent }}" 
-    {% endif %}>
-    {{ link.Name }}
-    </a>
-{% endif %}
+        {% if Model.HasItems == "true" %}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 158.2">
+                <path d="M225.8 0L128 97.8 30.2 0 0 30.2l128 128 128-128z"/>
+            </svg>
+        {% endif %}
+</a>
+
+
