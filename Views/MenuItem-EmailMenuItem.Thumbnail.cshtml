@@ -1,0 +1,9 @@
+﻿<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@T["Email Menu Item"]</h4>
+        <p>@T["Add mailto link for opening users default email program with pre-populated to address."]</p>
+    </div>
+    <div class="card-footer text-muted text-xs-right">
+        <a class="btn btn-primary btn-sm thumbnail-link-create" asp-route-action="Create" asp-route-controller="Admin" asp-route-id="@Model.MenuItemType" asp-route-menuContentItemId="@Model.MenuContentItemId" asp-route-area="OrchardCore.Menu">@T["Add"]</a>
+    </div>
+</div>
