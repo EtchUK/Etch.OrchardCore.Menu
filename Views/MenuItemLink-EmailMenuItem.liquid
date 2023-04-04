@@ -1,0 +1,18 @@
+﻿{% assign emailMenuItem = Model.ContentItem.Content.EmailMenuItem %}
+
+{% assign cssClasses = "" %}
+
+{% if Model.ContentItem.Content.LinkVisualPart.Style.Text %}
+    {% assign cssClasses = cssClasses | append: Model.ContentItem.Content.LinkVisualPart.Style.Text %}
+{% endif %}
+
+{% assign linkUrl = "mailto:" | append: emailMenuItem.EmailAddress.Text %}
+
+{% if emailMenuItem.Subject.Text != blank %}
+    {% assign linkUrl = linkUrl | append: "?subject=" | append: emailMenuItem.Subject.Text %}
+{% endif %}
+
+<a href="{{ linkUrl }}" 
+   {% if cssClasses != blank %} class="{{ cssClasses }}" {% endif %}>
+    {{ emailMenuItem.Label.Text }}
+</a>

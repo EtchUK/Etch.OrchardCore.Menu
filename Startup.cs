@@ -10,6 +10,8 @@ namespace Etch.OrchardCore.Menu
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDataMigration, Migrations>();
+            services.AddScoped<IDataMigration, EmailMenuItemMigrations>();
+
             services.AddScoped<ICommonMenuItemPartMigrator, CommonMenuItemPartMigrator>();
         }
     }
