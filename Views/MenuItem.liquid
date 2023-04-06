@@ -14,7 +14,7 @@
 
     {% if Model.HasItems %}
         <div class="nav__sub">
-            <ul class="nav__sub-items">
+            <ul class="nav__sub-items list-reset">
                 {% for item in Model.Items %}
                     {{ item | shape_render }}
                 {% endfor %}
