@@ -1,9 +1,11 @@
 ﻿{% assign emailMenuItem = Model.ContentItem.Content.EmailMenuItem %}
 
-{% assign cssClasses = "" %}
+{% assign cssClasses = "nav__item-link nav__item-link--email" %}
 
 {% if Model.ContentItem.Content.LinkVisualPart.Style.Text %}
-    {% assign cssClasses = cssClasses | append: Model.ContentItem.Content.LinkVisualPart.Style.Text %}
+    {% assign cssClasses = cssClasses | append:" " | append: Model.ContentItem.Content.LinkVisualPart.Style.Text %}
+{% else %}
+    {% assign cssClasses = cssClasses | append: " nav__item-link--default link" %}
 {% endif %}
 
 {% assign linkUrl = "mailto:" | append: emailMenuItem.EmailAddress.Text %}

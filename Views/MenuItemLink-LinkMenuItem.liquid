@@ -3,17 +3,19 @@
 {% assign isOpenNewTab = Model.ContentItem.Content.LinkMenuItem.OpenNewTab.Value %}
 
 {% assign openIn = Model.ContentItem.Content.LinkBehaviourPart.OpenIn.Text %}
-{% assign isModal = openIn == 'modal' or openIn == 'modal-wide' %}
+{% assign isModal = openIn == "modal" or openIn == "modal-wide" %}
 {% assign onClickEvent = Model.ContentItem.Content.LinkBehaviourPart.ClickEvent.Value %}
 
-{% assign cssClasses = "" %}
+{% assign cssClasses = "nav__item-link" %}
 
 {% if Model.ContentItem.Content.LinkVisualPart.Style.Text %}
-    {% assign cssClasses = cssClasses | append: Model.ContentItem.Content.LinkVisualPart.Style.Text %}
+    {% assign cssClasses = cssClasses | append:" " | append: Model.ContentItem.Content.LinkVisualPart.Style.Text %}
+{% else %}
+    {% assign cssClasses = cssClasses | append: " nav__item-link--default link" %}
 {% endif %}
 
 {% if isModal %}
-    {% assign cssClasses = cssClasses | append: ' js-iframe-modal' %}
+    {% assign cssClasses = cssClasses | append: " js-iframe-modal" %}
 {% endif %}
 
 {% if Model.HasItems == "true" %}
@@ -30,7 +32,7 @@
     {% elsif isModal %}
     data-iframe="true"
     {% endif %}
-    {% if openIn == 'modal-wide' %}
+    {% if openIn == "modal-wide" %}
     data-wide="true"
     {% endif %}
     {% if onClickEvent != blank %}
@@ -44,5 +46,3 @@
             </svg>
         {% endif %}
 </a>
-
-
