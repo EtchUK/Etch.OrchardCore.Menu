@@ -18,6 +18,10 @@
     {% assign cssClasses = cssClasses | append: " js-iframe-modal" %}
 {% endif %}
 
+{% if Model.HasItems == "true" %}
+    {% assign cssClasses = cssClasses | append: '  js-nav-parent-link' %}
+{% endif %}
+
 <a href="{{ link.Url | href }}" 
     {% if Model.HasItems == "true" %}
     aria-haspopup="true" 
