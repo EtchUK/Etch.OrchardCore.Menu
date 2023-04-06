@@ -38,7 +38,7 @@
     {% if onClickEvent != blank %}
     onClick="{{ onClickEvent }}" 
     {% endif %}         
-    class="{{ cssClasses }} js-nav-parent-link">
+    class="{{ cssClasses }}">
         {{ link.Name }}
         {% if Model.HasItems == "true" %}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 158.2">
@@ -46,4 +46,3 @@
             </svg>
         {% endif %}
 </a>
-
