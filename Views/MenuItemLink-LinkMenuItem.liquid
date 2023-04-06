@@ -11,7 +11,7 @@
 {% if Model.ContentItem.Content.LinkVisualPart.Style.Text %}
     {% assign cssClasses = cssClasses | append:" " | append: Model.ContentItem.Content.LinkVisualPart.Style.Text %}
 {% else %}
-    {% assign cssClasses = cssClasses | append: " nav__item-link--default" %}
+    {% assign cssClasses = cssClasses | append: " nav__item-link--default link" %}
 {% endif %}
 
 {% if isModal %}
