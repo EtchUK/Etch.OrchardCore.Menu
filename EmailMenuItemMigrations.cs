@@ -3,6 +3,7 @@ using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
+using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.Menu
 {
@@ -15,9 +16,9 @@ namespace Etch.OrchardCore.Menu
             _contentDefinitionManager = contentDefinitionManager;
         }
 
-        public int Create()
+        public async Task<int> CreateAsync()
         {
-            _contentDefinitionManager.AlterPartDefinition("EmailMenuItem", builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync("EmailMenuItem", builder => builder
                 .WithField("EmailAddress", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Email Address")
@@ -29,7 +30,7 @@ namespace Etch.OrchardCore.Menu
                     })
                     .WithPosition("1")));
 
-            _contentDefinitionManager.AlterTypeDefinition("EmailMenuItem", builder => builder
+            await _contentDefinitionManager.AlterTypeDefinitionAsync("EmailMenuItem", builder => builder
                 .Stereotype("MenuItem")
                 .WithPart("EmailMenuItem", builder => builder
                     .WithPosition("1"))
@@ -39,9 +40,9 @@ namespace Etch.OrchardCore.Menu
             return 1;
         }
 
-        public int UpdateFrom1()
+        public async Task<int> UpdateFrom1Async()
         {
-            _contentDefinitionManager.AlterPartDefinition("EmailMenuItem", builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync("EmailMenuItem", builder => builder
                 .WithField("Subject", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Subject")
@@ -55,9 +56,9 @@ namespace Etch.OrchardCore.Menu
             return 2;
         }
 
-        public int UpdateFrom2()
+        public async Task<int> UpdateFrom2()
         {
-            _contentDefinitionManager.AlterPartDefinition("EmailMenuItem", builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync("EmailMenuItem", builder => builder
                 .WithField("Label", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Label")
