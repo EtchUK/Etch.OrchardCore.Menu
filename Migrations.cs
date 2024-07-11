@@ -74,7 +74,7 @@ namespace Etch.OrchardCore.Menu
 
         public async Task<int> UpdateFrom6Async()
         {
-            await _contentDefinitionManager.AlterTypeDefinitionAsync ("ContentMenuItem", builder => builder
+            await _contentDefinitionManager.AlterTypeDefinitionAsync("ContentMenuItem", builder => builder
                 .RemovePart(nameof(CommonMenuItem))
                 .WithPart(nameof(LinkBehaviourPart), part => part
                     .WithPosition("15")));
