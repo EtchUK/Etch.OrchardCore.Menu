@@ -10,6 +10,7 @@ namespace Etch.OrchardCore.Menu
     public class EmailMenuItemMigrations : DataMigration
     {
         private readonly IContentDefinitionManager _contentDefinitionManager;
+        private const string EmailMenuItem = "EmailMenuItem";
 
         public EmailMenuItemMigrations(IContentDefinitionManager contentDefinitionManager)
         {
@@ -18,7 +19,7 @@ namespace Etch.OrchardCore.Menu
 
         public async Task<int> CreateAsync()
         {
-            await _contentDefinitionManager.AlterPartDefinitionAsync("EmailMenuItem", builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync(EmailMenuItem, builder => builder
                 .WithField("EmailAddress", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Email Address")
@@ -30,9 +31,9 @@ namespace Etch.OrchardCore.Menu
                     })
                     .WithPosition("1")));
 
-            await _contentDefinitionManager.AlterTypeDefinitionAsync("EmailMenuItem", builder => builder
+            await _contentDefinitionManager.AlterTypeDefinitionAsync(EmailMenuItem, builder => builder
                 .Stereotype("MenuItem")
-                .WithPart("EmailMenuItem", builder => builder
+                .WithPart(EmailMenuItem, builder => builder
                     .WithPosition("1"))
                 .WithPart("LinkVisualPart", builder => builder
                     .WithPosition("2")));
@@ -42,7 +43,7 @@ namespace Etch.OrchardCore.Menu
 
         public async Task<int> UpdateFrom1Async()
         {
-            await _contentDefinitionManager.AlterPartDefinitionAsync("EmailMenuItem", builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync(EmailMenuItem, builder => builder
                 .WithField("Subject", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Subject")
@@ -58,7 +59,7 @@ namespace Etch.OrchardCore.Menu
 
         public async Task<int> UpdateFrom2Async()
         {
-            await _contentDefinitionManager.AlterPartDefinitionAsync("EmailMenuItem", builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync(EmailMenuItem, builder => builder
                 .WithField("Label", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Label")
