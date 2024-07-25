@@ -56,7 +56,7 @@ namespace Etch.OrchardCore.Menu
             return 2;
         }
 
-        public async Task<int> UpdateFrom2()
+        public async Task<int> UpdateFrom2Async()
         {
             await _contentDefinitionManager.AlterPartDefinitionAsync("EmailMenuItem", builder => builder
                 .WithField("Label", field => field
